@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}
+    Old News
+{% endblock %}
+
+{% block body %}
+    <!-- news -->
+    <div class="container">
+        <h2>Old News</h2>
+        <div class="card float-left">
+            <div class="row ">
+            {% for d in data %}
+                {% for k, v in d.items %}
+                    {% if k != date_now %}
+                    <div class="col-sm-7">
+                        <div class="card-block">
+                            <p class="lead text-primary">{{ v.title }}</p>
+                            <p>{{ v.content }}</p>
+                            <a href="{{ v.url }}" class="btn btn-primary btn-sm">Read More</a>
+                            <span class="date small" class="date">{{ k }}</span>
+                        </div>
+                    </div>
+                    <div class="col-sm-5">
+                        <a href="{{ v.url }}">
+                        <img src="{{ v.urlImage }}" class="d-block w-100" alt="news">
+                        </a>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="footer bg-dark">
+        <p class="text-center lead">copyright@ all right reserved by Abdin</p>
+    </div>
+{% endblock %}
